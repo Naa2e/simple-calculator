@@ -22,70 +22,56 @@ namespace SimpleCalculator
                */
             Console.WriteLine("Enter your equation");
             string expressions = (Console.ReadLine());
+            //char[] expressions = input.ToCharArray();
 
-            string pattern = @"(\d+)\s+([-+*/])\s+(\d+)";
+            string pattern = @"(\d+)\s+([-+*%/])\s+(\d+)";
 
-            foreach (var expression in expressions)
-                foreach (Match m in Regex.Matches(expression, pattern))
+            //foreach (var expression in expressions)
+                foreach (Match m in Regex.Matches(expressions, pattern))
                 {
                     int value1 = Int32.Parse(m.Groups[1].Value);
                     int value2 = Int32.Parse(m.Groups[3].Value);
                     switch (m.Groups[2].Value)
 
-            Console.WriteLine("Write a number for x");
-            int x = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Write a number for y");
-            int y = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("// Choose a option //");
-            Console.WriteLine("1 - addition");
-            Console.WriteLine("2 - subtration ");
-            Console.WriteLine("3 - multification");
-            Console.WriteLine("4 - division");
-            //Console.WriteLine("5 - percentage");
-
-            int z = Convert.ToInt32(Console.ReadLine());
-            switch (z)
-            {
-                case 1:
-                    Console.WriteLine(x + y);
-                    break;
-                case 2:
-                    Console.WriteLine(x - y);
-                    break;
-                case 3:
-                    Console.WriteLine(x * y);
-                    break;
-                case 4:
-                    Console.WriteLine(x / y);
-                    break;
-                /*case 5:
-                    Console.WriteLine(x / y);
-                    break;*/
+                    {
+                        case "+":
+                            Console.WriteLine("{0} = {1}", m.Value, value1 + value2);
+                            break;
+                        case "-":
+                            Console.WriteLine("{0} = {1}", m.Value, value1 - value2);
+                            break;
+                        case "*":
+                            Console.WriteLine("{0} = {1}", m.Value, value1 * value2);
+                            break;
+                        case "/":
+                            Console.WriteLine("{0} = {1:N2}", m.Value, value1 / value2);
+                            break;
+                        case "%":
+                            Console.WriteLine("{0} = {1}", m.Value, value1 % value2);
+                            break;
+                }
+                Console.ReadLine(); //figure out how they can do math without spaces
             }
-            Console.ReadKey(true);
         }
-
-        /*Console.WriteLine("Enter your number of friends");
-          int x = Convert.ToInt32(Console.ReadLine());
-          if x = 2 alive
-          if x = 3 alive
-          if x >= 4 dead
-
-            {
-                case 1:
-                   if x = 1 Console.WriteLine(dead);
-                break;
-                case 2:
-                    if x = 2 Console.WriteLine(alive);
-                break;
-                case 3:
-                    if x = 3 Console.WriteLine(alive);
-                break;
-                case 4:
-                    if x = 4 Console.WriteLine(dead);
-                break;*/
     }
 }
-    
+
+/*Console.WriteLine("Enter your number of friends");
+  int x = Convert.ToInt32(Console.ReadLine());
+  if x = 2 alive
+  if x = 3 alive
+  if x >= 4 dead
+
+    {
+        case 1:
+           if x = 1 Console.WriteLine(dead);
+        break;
+        case 2:
+            if x = 2 Console.WriteLine(alive);
+        break;
+        case 3:
+            if x = 3 Console.WriteLine(alive);
+        break;
+        case 4:
+            if x = 4 Console.WriteLine(dead);
+        break;*/
