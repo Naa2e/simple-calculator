@@ -22,11 +22,9 @@ namespace SimpleCalculator
                */
             Console.WriteLine("Enter your equation");
             string expressions = (Console.ReadLine());
-            //char[] expressions = input.ToCharArray();
 
             string pattern = @"(\d+)\s+([-+*%/])\s+(\d+)";
 
-            //foreach (var expression in expressions)
                 foreach (Match m in Regex.Matches(expressions, pattern))
                 {
                     int value1 = Int32.Parse(m.Groups[1].Value);
